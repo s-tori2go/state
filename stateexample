@@ -1,0 +1,19 @@
+#!/bin/bash
+
+script_full_path=$(dirname "$0")
+FILE=${script_full_path}/state.txt
+
+if [ -f "$FILE" ]; then
+    echo "Inhalt der Datei $FILE:"
+    echo $(<$FILE)
+else 
+    echo "Datei $FILE existiert nicht."
+fi
+
+echo "Geben Sie eine Nachricht ein: "
+read message
+
+echo "${message}" > $FILE
+
+echo "Inhalt der Datei $FILE:"
+echo $(<$FILE)

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function printstate {
+    echo -e "\nInhalt der Datei \"state.txt\":"
+    cat /var/stateexample/state.txt
+}
+
+if [ -f "/var/stateexample/state.txt" ]; then
+    printstate
+else
+    echo "Datei \"state.txt\" existiert nicht."
+fi
+
+read -p "Geben Sie eine Nachricht ein: " message
+
+mkdir -p /var/stateexample
+echo $message > /var/stateexample/state.txt
+
+printstate
